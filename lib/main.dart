@@ -1,4 +1,5 @@
 import 'package:care_file_one/src/screens/login_screen.dart';
+import 'package:care_file_one/src/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,9 +14,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'CareFile-One',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/signup',
       routes: {
         '/': (context) => const LoginScreen(),
+        '/signup': (context) => const SignUpScreen(),
       },
     );
   }

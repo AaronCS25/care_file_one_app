@@ -12,6 +12,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _dni = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
+  //?dispose
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextField(
                     controller: _dni,
                     decoration: const InputDecoration(
-                        hintText: 'DNI', border: InputBorder.none),
+                      hintText: 'DNI',
+                      border: InputBorder.none,
+                    ),
                   ),
                 ),
               ),

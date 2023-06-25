@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -271,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Stack(
-                              children: <Widget>[
+                              children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: ListView.builder(
@@ -279,26 +281,39 @@ class _HomeScreenState extends State<HomeScreen> {
                                     itemCount: _padecimientos.length,
                                     itemBuilder: (context, index) {
                                       return Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 8.0),
-                                          child: RichText(
-                                            text: TextSpan(
-                                                text: '• ',
-                                                style:
-                                                    DefaultTextStyle.of(context)
-                                                        .style,
-                                                children: <TextSpan>[
-                                                  TextSpan(
-                                                    text: _padecimientos[index],
-                                                    style:
-                                                        GoogleFonts.montserrat(
-                                                            fontSize: 16),
-                                                  )
-                                                ]),
-                                          ));
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              text: '• ',
+                                              style:
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                  text: _padecimientos[index],
+                                                  style: GoogleFonts.montserrat(
+                                                      fontSize: 16),
+                                                )
+                                              ]),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ),
+                                if (_isBlurredPadecimientos)
+                                  Positioned.fill(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5),
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 5, sigmaY: 5),
+                                        child: Container(
+                                          color: Colors.black.withOpacity(0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 Align(
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
@@ -315,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       },
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -391,7 +406,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Stack(
-                              children: <Widget>[
+                              children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: ListView.builder(
@@ -399,26 +414,39 @@ class _HomeScreenState extends State<HomeScreen> {
                                     itemCount: _cirugias.length,
                                     itemBuilder: (context, index) {
                                       return Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 8.0),
-                                          child: RichText(
-                                            text: TextSpan(
-                                                text: '• ',
-                                                style:
-                                                    DefaultTextStyle.of(context)
-                                                        .style,
-                                                children: <TextSpan>[
-                                                  TextSpan(
-                                                    text: _cirugias[index],
-                                                    style:
-                                                        GoogleFonts.montserrat(
-                                                            fontSize: 16),
-                                                  )
-                                                ]),
-                                          ));
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              text: '• ',
+                                              style:
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                  text: _cirugias[index],
+                                                  style: GoogleFonts.montserrat(
+                                                      fontSize: 16),
+                                                )
+                                              ]),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ),
+                                if (_isBlurredCirugias)
+                                  Positioned.fill(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5),
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 5, sigmaY: 5),
+                                        child: Container(
+                                          color: Colors.black.withOpacity(0),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 Align(
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
@@ -435,7 +463,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       },
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),

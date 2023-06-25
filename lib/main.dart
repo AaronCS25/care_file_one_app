@@ -1,4 +1,5 @@
 import 'package:care_file_one/src/screens/alergias_screen.dart';
+import 'package:care_file_one/src/screens/cirugias_screen.dart';
 import 'package:care_file_one/src/screens/home_screen.dart';
 import 'package:care_file_one/src/screens/login_screen.dart';
 import 'package:care_file_one/src/screens/medicacion_screen.dart';
@@ -19,7 +20,7 @@ class MainApp extends StatelessWidget {
       title: 'CareFile-One',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      initialRoute: '/padecimientos',
+      initialRoute: '/cirugias',
       routes: {
         '/': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),
@@ -27,6 +28,7 @@ class MainApp extends StatelessWidget {
         '/alergias': (context) => const AlergiasScreen(),
         '/medicacion': (context) => const MedicacionScreen(),
         '/padecimientos': (context) => const PadecimientosScreen(),
+        '/cirugias': (context) => const CirugiasScreen(),
       },
     );
   }

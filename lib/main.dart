@@ -3,6 +3,7 @@ import 'package:care_file_one/src/screens/alergias_screen.dart';
 import 'package:care_file_one/src/screens/cirugias_screen.dart';
 import 'package:care_file_one/src/screens/home_screen.dart';
 import 'package:care_file_one/src/screens/login_screen.dart';
+import 'package:care_file_one/src/screens/medicacion_full_screen.dart';
 import 'package:care_file_one/src/screens/medicacion_screen.dart';
 import 'package:care_file_one/src/screens/padecimientos_screen.dart';
 import 'package:care_file_one/src/screens/signup_screen.dart';
@@ -21,7 +22,7 @@ class MainApp extends StatelessWidget {
       title: 'CareFile-One',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      initialRoute: '/alergiasFull',
+      initialRoute: '/medicacionFull',
       routes: {
         '/': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),
@@ -36,7 +37,14 @@ class MainApp extends StatelessWidget {
               sintomas: ["uno", "dos"],
               treatment: "no hacer nada",
               type: 'medica',
-            )
+            ),
+        '/medicacionFull': (context) => const MedicacionFullScreen(
+            title: 'Panadol',
+            description: 'Descripción',
+            indicaciones: 'Indicaciones',
+            modoDeUso: 'no usar',
+            precauciones: ['indicacion 1', 'indicacion 2'],
+            type: 'pildoras')
       },
     );
   }

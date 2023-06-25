@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AlergiaFullScreen extends StatefulWidget {
-  const AlergiaFullScreen(
+class MedicacionFullScreen extends StatefulWidget {
+  const MedicacionFullScreen(
       {super.key,
       required this.title,
       required this.description,
-      required this.sintomas,
-      required this.treatment,
+      required this.indicaciones,
+      required this.modoDeUso,
+      required this.precauciones,
       required this.type});
 
   final String title;
   final String description;
-  final List<String> sintomas;
-  final String treatment;
+  final String indicaciones;
+  final String modoDeUso;
+  final List<String> precauciones;
   final String type;
 
   @override
-  State<AlergiaFullScreen> createState() => _AlergiaFullScreenState();
+  State<MedicacionFullScreen> createState() => _MedicacionFullScreenState();
 }
 
-class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
+class _MedicacionFullScreenState extends State<MedicacionFullScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +39,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
                   ),
                 ),
                 Image.asset(
-                  'assets/images/alergias/${widget.type}.png',
+                  'assets/images/medicacion/${widget.type}.png',
                   width: 50,
                   height: 50,
                 )
@@ -59,10 +61,12 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
                     children: [
                       header('Descripción'),
                       body(widget.description),
-                      header('Sintomas'),
-                      textListBody(widget.sintomas),
-                      header('Tratamiento en caso de emergencias'),
-                      body(widget.treatment)
+                      header('Indicaciones'),
+                      body(widget.indicaciones),
+                      header('Modo de uso:'),
+                      body(widget.modoDeUso),
+                      header('Precauciones'),
+                      textListBody(widget.precauciones),
                     ],
                   ),
                 ),

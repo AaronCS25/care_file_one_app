@@ -6,6 +6,7 @@ import 'package:care_file_one/src/screens/login_screen.dart';
 import 'package:care_file_one/src/screens/medicacion_full_screen.dart';
 import 'package:care_file_one/src/screens/medicacion_screen.dart';
 import 'package:care_file_one/src/screens/padecimientos_screen.dart';
+import 'package:care_file_one/src/screens/recetas_screen.dart';
 import 'package:care_file_one/src/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class MainApp extends StatelessWidget {
       title: 'CareFile-One',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      initialRoute: '/medicacionFull',
+      initialRoute: '/recetas',
       routes: {
         '/': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),
@@ -44,7 +45,8 @@ class MainApp extends StatelessWidget {
             indicaciones: 'Indicaciones',
             modoDeUso: 'no usar',
             precauciones: ['indicacion 1', 'indicacion 2'],
-            type: 'pildoras')
+            type: 'pildoras'),
+        '/recetas': (context) => const RecetasScreen(),
       },
     );
   }

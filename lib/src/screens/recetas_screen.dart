@@ -30,6 +30,8 @@ class _RecetasScreenState extends State<RecetasScreen> {
     },
   ];
 
+  String currentDate = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,10 +59,47 @@ class _RecetasScreenState extends State<RecetasScreen> {
       body: ListView.builder(
         itemCount: recetas.length,
         itemBuilder: (context, index) {
-          return RecetasCard(
+          final currentFecha = recetas[index]['fecha']!;
+          if (currentDate != currentFecha) {
+            currentDate = currentFecha;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 8.0,
+                  ),
+                  child: Row(
+                    children: [
+                      Text(currentDate,
+                          style: GoogleFonts.montserrat(
+                            fontSize: 16,
+                            color: Colors.grey,
+                          )),
+                      const Expanded(
+                        child: Divider(
+                          color: Colors.grey,
+                          thickness: 1.0,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                RecetasCard(
+                  title: recetas[index]['title']!,
+                  date: recetas[index]['fecha']!,
+                  recetaId: 5,
+                ),
+              ],
+            );
+          } else {
+            return RecetasCard(
               title: recetas[index]['title']!,
               date: recetas[index]['fecha']!,
-              recetaId: 5);
+              recetaId: 5,
+            );
+          }
         },
       ),
     );

@@ -2,20 +2,18 @@ import 'package:care_file_one/src/widgets/main_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AlergiasScreen extends StatefulWidget {
-  const AlergiasScreen({super.key});
+class MedicacionScreen extends StatefulWidget {
+  const MedicacionScreen({super.key});
 
   @override
-  State<AlergiasScreen> createState() => _AlergiasScreenState();
+  State<MedicacionScreen> createState() => _MedicacionScreenState();
 }
 
-class _AlergiasScreenState extends State<AlergiasScreen> {
+class _MedicacionScreenState extends State<MedicacionScreen> {
   List<Map<String, String>> alergias = [
-    {'title': 'Penicilina', 'type': 'medica'},
-    {'title': 'Antiinflamatorios', 'type': 'medica'},
-    {'title': 'Polen', 'type': 'ambiental'},
-    {'title': 'Mariscos', 'type': 'alimenticia'},
-    {'title': 'Apis Melifera', 'type': 'animal'},
+    {'title': 'Panadol', 'type': 'pildoras'},
+    {'title': 'Calpol', 'type': 'jarabe'},
+    {'title': 'Amoxil', 'type': 'pildoras'},
   ];
 
   @override
@@ -24,7 +22,7 @@ class _AlergiasScreenState extends State<AlergiasScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          'ALERGIAS',
+          'MEDICACIÓN ACTUAL',
           style: GoogleFonts.montserrat(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -48,7 +46,7 @@ class _AlergiasScreenState extends State<AlergiasScreen> {
           return MainCard(
             title: alergias[index]['title']!,
             type: alergias[index]['type']!,
-            section: 'alergias',
+            section: 'medicacion',
           );
         },
       ),

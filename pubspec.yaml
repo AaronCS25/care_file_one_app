@@ -23,3 +23,6 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/alergias/
+    - assets/images/cirugias/
+    - assets/images/medicacion/
+    - assets/images/padecimientos/

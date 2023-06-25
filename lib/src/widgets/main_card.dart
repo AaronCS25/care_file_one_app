@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AlergiaCard extends StatefulWidget {
-  const AlergiaCard({super.key, required this.title, required this.type});
+class MainCard extends StatefulWidget {
+  const MainCard(
+      {super.key,
+      required this.title,
+      required this.type,
+      required this.section});
 
   final String title;
   final String type;
+  final String section;
 
   @override
-  State<AlergiaCard> createState() => _AlergiaCardState();
+  State<MainCard> createState() => _MainCardState();
 }
 
-class _AlergiaCardState extends State<AlergiaCard> {
+class _MainCardState extends State<MainCard> {
   bool _isTapped = false;
 
   @override
@@ -22,7 +27,6 @@ class _AlergiaCardState extends State<AlergiaCard> {
         onTap: () {
           if (!_isTapped) {
             _isTapped = true;
-            print('Tap on : ${widget.title}');
             // navegación
             _isTapped = false;
           }
@@ -46,7 +50,7 @@ class _AlergiaCardState extends State<AlergiaCard> {
                     ),
                   ),
                   Image.asset(
-                    'assets/images/alergias/${widget.type}.png',
+                    'assets/images/${widget.section}/${widget.type}.png',
                     width: 50,
                     height: 50,
                   )

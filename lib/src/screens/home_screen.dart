@@ -47,9 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            iconSize: 32,
-            padding: const EdgeInsets.symmetric(horizontal: 10),
             onPressed: () {},
+            padding: const EdgeInsets.only(right: 10),
+            iconSize: 32,
             icon: const Icon(Icons.share),
           )
         ],

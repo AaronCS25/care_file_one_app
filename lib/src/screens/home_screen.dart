@@ -9,6 +9,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final String _names = 'Aaron Arturo';
+  final String _lastNames = 'Camacho Valencia';
+  final String _address = 'Jr. Medrano Silva 165, Barranco';
+  final String _phoneNumber = '946 416 969';
+  final String _bloodType = 'a_plus';
+  final List<String> _allergies = [
+    'Penicilina',
+    'Antiinflamatorios',
+    'Polen',
+    'Mariscos',
+    'Apis Melifera'
+  ];
+  final List<String> _padecimientos = ['Diabetes', 'Artritis'];
+  final List<String> _medicacionActual = [
+    'Paracetamol',
+    'Acetaminofeno',
+    'Amoxicilina'
+  ];
+  final List<String> _cirugias = ['Apendicectomia', 'LASK'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/images/type_of_blood_a_plus.png',
+                  'assets/images/type_of_blood_$_bloodType.png',
                   width: 160,
                   height: 160,
                 ),
@@ -50,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Nombre',
+                        'Nombres',
                         style: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -66,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8, 12, 6, 12),
                           child: Text(
-                            'Aaron Arturo',
+                            _names,
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                             ),
@@ -91,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8, 12, 6, 12),
                           child: Text(
-                            'Camacho Valencia',
+                            _lastNames,
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                             ),
@@ -129,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8, 12, 6, 12),
                     child: Text(
-                      'Jr. Medrano Silva 165, Barranco',
+                      _address,
                       style: GoogleFonts.montserrat(
                         fontSize: 16,
                       ),
@@ -165,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            '+51 946 416 969',
+                            '+51 $_phoneNumber',
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                             ),
@@ -198,14 +218,38 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Expanded(
                           child: Container(
-                            width: double.infinity,
                             decoration: BoxDecoration(
                               color: const Color.fromRGBO(93, 93, 93, 0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: _allergies.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 8.0),
+                                      child: RichText(
+                                        text: TextSpan(
+                                            text: '• ',
+                                            style: DefaultTextStyle.of(context)
+                                                .style,
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: _allergies[index],
+                                                style: GoogleFonts.montserrat(
+                                                    fontSize: 16),
+                                              )
+                                            ]),
+                                      ));
+                                },
+                              ),
+                            ),
                           ),
                         ),
-                        const SizedBox(height: 16.0),
+                        const SizedBox(height: 8.0),
                         //* PADECIMIENTOS
                         Align(
                           alignment: Alignment.centerLeft,
@@ -223,6 +267,31 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                               color: const Color.fromRGBO(93, 93, 93, 0.1),
                               borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: _padecimientos.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 8.0),
+                                      child: RichText(
+                                        text: TextSpan(
+                                            text: '• ',
+                                            style: DefaultTextStyle.of(context)
+                                                .style,
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: _padecimientos[index],
+                                                style: GoogleFonts.montserrat(
+                                                    fontSize: 16),
+                                              )
+                                            ]),
+                                      ));
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -251,9 +320,34 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: const Color.fromRGBO(93, 93, 93, 0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: _medicacionActual.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 8.0),
+                                      child: RichText(
+                                        text: TextSpan(
+                                            text: '• ',
+                                            style: DefaultTextStyle.of(context)
+                                                .style,
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: _medicacionActual[index],
+                                                style: GoogleFonts.montserrat(
+                                                    fontSize: 16),
+                                              )
+                                            ]),
+                                      ));
+                                },
+                              ),
+                            ),
                           ),
                         ),
-                        const SizedBox(height: 16.0),
+                        const SizedBox(height: 8.0),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -270,6 +364,31 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                               color: const Color.fromRGBO(93, 93, 93, 0.1),
                               borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: _cirugias.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 8.0),
+                                      child: RichText(
+                                        text: TextSpan(
+                                            text: '• ',
+                                            style: DefaultTextStyle.of(context)
+                                                .style,
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: _cirugias[index],
+                                                style: GoogleFonts.montserrat(
+                                                    fontSize: 16),
+                                              )
+                                            ]),
+                                      ));
+                                },
+                              ),
                             ),
                           ),
                         ),

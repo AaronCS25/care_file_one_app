@@ -14,6 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final String _address = 'Jr. Medrano Silva 165, Barranco';
   final String _phoneNumber = '946 416 969';
   final String _bloodType = 'a_plus';
+  bool _isBlurredPadecimientos = true;
+  bool _isBlurredCirugias = true;
   final List<String> _allergies = [
     'Penicilina',
     'Antiinflamatorios',
@@ -268,30 +270,53 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: const Color.fromRGBO(93, 93, 93, 0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: _padecimientos.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: RichText(
-                                        text: TextSpan(
-                                            text: '• ',
-                                            style: DefaultTextStyle.of(context)
-                                                .style,
-                                            children: <TextSpan>[
-                                              TextSpan(
-                                                text: _padecimientos[index],
-                                                style: GoogleFonts.montserrat(
-                                                    fontSize: 16),
-                                              )
-                                            ]),
-                                      ));
-                                },
-                              ),
+                            child: Stack(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: _padecimientos.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: RichText(
+                                            text: TextSpan(
+                                                text: '• ',
+                                                style:
+                                                    DefaultTextStyle.of(context)
+                                                        .style,
+                                                children: <TextSpan>[
+                                                  TextSpan(
+                                                    text: _padecimientos[index],
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            fontSize: 16),
+                                                  )
+                                                ]),
+                                          ));
+                                    },
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: IconButton(
+                                      icon: Icon(_isBlurredPadecimientos
+                                          ? Icons.visibility_off
+                                          : Icons.visibility),
+                                      onPressed: () {
+                                        setState(() {
+                                          _isBlurredPadecimientos =
+                                              !_isBlurredPadecimientos;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                         ),
@@ -365,30 +390,53 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: const Color.fromRGBO(93, 93, 93, 0.1),
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: _cirugias.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: RichText(
-                                        text: TextSpan(
-                                            text: '• ',
-                                            style: DefaultTextStyle.of(context)
-                                                .style,
-                                            children: <TextSpan>[
-                                              TextSpan(
-                                                text: _cirugias[index],
-                                                style: GoogleFonts.montserrat(
-                                                    fontSize: 16),
-                                              )
-                                            ]),
-                                      ));
-                                },
-                              ),
+                            child: Stack(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: _cirugias.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: RichText(
+                                            text: TextSpan(
+                                                text: '• ',
+                                                style:
+                                                    DefaultTextStyle.of(context)
+                                                        .style,
+                                                children: <TextSpan>[
+                                                  TextSpan(
+                                                    text: _cirugias[index],
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            fontSize: 16),
+                                                  )
+                                                ]),
+                                          ));
+                                    },
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4),
+                                    child: IconButton(
+                                      icon: Icon(_isBlurredCirugias
+                                          ? Icons.visibility_off
+                                          : Icons.visibility),
+                                      onPressed: () {
+                                        setState(() {
+                                          _isBlurredCirugias =
+                                              !_isBlurredCirugias;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                         ),

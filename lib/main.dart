@@ -1,3 +1,4 @@
+import 'package:care_file_one/src/screens/alergia_full_screen.dart';
 import 'package:care_file_one/src/screens/alergias_screen.dart';
 import 'package:care_file_one/src/screens/cirugias_screen.dart';
 import 'package:care_file_one/src/screens/home_screen.dart';
@@ -20,7 +21,7 @@ class MainApp extends StatelessWidget {
       title: 'CareFile-One',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      initialRoute: '/cirugias',
+      initialRoute: '/alergiasFull',
       routes: {
         '/': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),
@@ -29,6 +30,13 @@ class MainApp extends StatelessWidget {
         '/medicacion': (context) => const MedicacionScreen(),
         '/padecimientos': (context) => const PadecimientosScreen(),
         '/cirugias': (context) => const CirugiasScreen(),
+        '/alergiasFull': (context) => const AlergiaFullScreen(
+              title: 'Penicilina',
+              description: 'texto',
+              sintomas: ["uno", "dos"],
+              treatment: "no hacer nada",
+              type: 'medica',
+            )
       },
     );
   }

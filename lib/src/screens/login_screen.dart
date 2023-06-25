@@ -83,7 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(30))),
                   child: Text(
                     'Login',
-                    style: GoogleFonts.montserrat(fontSize: 24),
+                    style: GoogleFonts.montserrat(
+                        fontSize: 24, color: Colors.white),
                   ),
                 ),
               ),

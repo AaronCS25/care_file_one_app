@@ -115,11 +115,35 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             );
                           } else {
-                            scaffoldMessenger.showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                    'Fallo inicio de sesión. Intente de nuevo'),
+                            //TODO: AGREGAR UN MEJOR OVERLAY
+                            final overlayState = Overlay.of(context);
+                            final overlayEntry = OverlayEntry(
+                              builder: (context) => Positioned(
+                                top:
+                                    50, // Ajusta este valor para cambiar la posición vertical del mensaje
+                                width: MediaQuery.of(context).size.width,
+                                child: const Center(
+                                  child: Card(
+                                    color: Colors.red,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Falló inicio de sesión!',
+                                        style: TextStyle(fontSize: 18.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
+                            );
+
+                            overlayState.insert(overlayEntry);
+
+                            Future.delayed(
+                              const Duration(seconds: 3),
+                              () {
+                                overlayEntry.remove();
+                              },
                             );
                           }
                         });
@@ -165,7 +189,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           side: const BorderSide(
                               color: Color.fromRGBO(0, 0, 0, 0.3))),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/signup');
+                    },
                     child: Text(
                       'Sign Up',
                       style: GoogleFonts.montserrat(

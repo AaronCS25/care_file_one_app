@@ -514,6 +514,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               },
                             );
                           }
+                        }).then((value) {
+                          Navigator.pushReplacementNamed(context, '/');
                         });
                       }
                     },

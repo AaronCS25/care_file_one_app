@@ -105,9 +105,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         final scaffoldMessenger = ScaffoldMessenger.of(context);
 
-                        _loginApiService
-                            .loginUser(loginRequestModel)
-                            .then((success) {
+                        _loginApiService.loginUser(loginRequestModel).then(
+                            (success) {
                           if (success) {
                             scaffoldMessenger.showSnackBar(
                               const SnackBar(
@@ -146,7 +145,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                             );
                           }
-                        });
+                        }).then((value) =>
+                            Navigator.pushReplacementNamed(context, '/home'));
                       }
                     },
                     style: ElevatedButton.styleFrom(

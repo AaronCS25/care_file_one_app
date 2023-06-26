@@ -1,3 +1,5 @@
+import 'package:care_file_one/apis/login_api_service.dart';
+import 'package:care_file_one/models/user_model/login_request_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formLoginKey = GlobalKey<FormState>();
+  final LoginApiService _loginApiService = LoginApiService();
 
   final TextEditingController _dni = TextEditingController();
   final TextEditingController _password = TextEditingController();
@@ -97,9 +100,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formLoginKey.currentState?.validate() ?? false) {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Processing Data')),
-                        
-                        );
+                        final loginRequestModel = LoginRequestModel(
+                            dni: _dni.text, password: _password.text);
+
+                        final scaffoldMessenger = ScaffoldMessenger.of(context);
+
+                        _loginApiService
+                            .loginUser(loginRequestModel)
+                            .then((success) {
+                          if (success) {
+                            scaffoldMessenger.showSnackBar(
+                              const SnackBar(
+                                content: Text('Inicio de sesión exitoso!'),
+                              ),
+                            );
+                          } else {
+                            scaffoldMessenger.showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                    'Fallo inicio de sesión. Intente de nuevo'),
+                              ),
+                            );
+                          }
+                        });
                       }
                     },
                     style: ElevatedButton.styleFrom(

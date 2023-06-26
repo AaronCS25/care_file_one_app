@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
       title: 'CareFile-One',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      initialRoute: '/recetasAdd',
+      initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),

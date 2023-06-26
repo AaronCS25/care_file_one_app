@@ -1,3 +1,5 @@
+import 'package:care_file_one/apis/signup_api_service.dart';
+import 'package:care_file_one/models/user_model/signup_request_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formSignUpKey = GlobalKey<FormState>();
+  final SignUpApiService _signUpApiService = SignUpApiService();
 
   final TextEditingController _firstName = TextEditingController();
   final TextEditingController _lastName = TextEditingController();
@@ -387,6 +390,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
+                            obscureText: true,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Por favor ingrese su contraseña';
@@ -433,6 +437,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 borderSide: BorderSide.none,
                               ),
                             ),
+                            obscureText: true,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Por favor confirme su contraseña';
@@ -458,7 +463,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formSignUpKey.currentState?.validate() ?? false) {}
+                      if (_formSignUpKey.currentState?.validate() ?? false) {
+                        final SignUpRequestModel signUpRequestModel =
+                            SignUpRequestModel(
+                          email: _email.text,
+                          name: _firstName.text,
+                          password: _password.text,
+                        );
+
+                        final scaffoldMessenger = ScaffoldMessenger.of(context);
+
+                        _signUpApiService
+                            .signUpUser(signUpRequestModel)
+                            .then((success) {
+                          if (success) {
+                            scaffoldMessenger.showSnackBar(
+                              const SnackBar(
+                                content: Text('Registro exitóso!'),
+                              ),
+                            );
+                          } else {
+                            //TODO: AGREGAR UN MEJOR OVERLAY
+                            final overlayState = Overlay.of(context);
+                            final overlayEntry = OverlayEntry(
+                              builder: (context) => Positioned(
+                                top:
+                                    50, // Ajusta este valor para cambiar la posición vertical del mensaje
+                                width: MediaQuery.of(context).size.width,
+                                child: const Center(
+                                  child: Card(
+                                    color: Colors.red,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Falló registro de usuario!',
+                                        style: TextStyle(fontSize: 18.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+
+                            overlayState.insert(overlayEntry);
+
+                            Future.delayed(
+                              const Duration(seconds: 3),
+                              () {
+                                overlayEntry.remove();
+                              },
+                            );
+                          }
+                        });
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:

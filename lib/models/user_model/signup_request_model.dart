@@ -1,9 +1,9 @@
-class LoginRequestModel {
+class SignUpRequestModel {
   String email;
   String name;
   String password;
 
-  LoginRequestModel(
+  SignUpRequestModel(
       {required this.email, required this.name, required this.password});
 
   Map<String, dynamic> toJson() {

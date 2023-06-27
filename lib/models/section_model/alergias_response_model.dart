@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class AlergiasResponseModel {
   int idAlergia;
   int idUsuario;
@@ -22,12 +20,12 @@ class AlergiasResponseModel {
     );
   }
 
-  static List<AlergiasResponseModel> parseList(String responseBody) {
-    final parsed =
-        jsonDecode(responseBody)['data'].cast<Map<String, dynamic>>();
-    return parsed
+  static List<AlergiasResponseModel> parseList(Map<String, dynamic> json) {
+    final List<dynamic> data = json['data'];
+    return data
         .map<AlergiasResponseModel>(
-            (json) => AlergiasResponseModel.fromJson(json))
+          (item) => AlergiasResponseModel.fromJson(item),
+        )
         .toList();
   }
 }

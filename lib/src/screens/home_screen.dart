@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:care_file_one/apis/alergia_api_service.dart';
+import 'package:care_file_one/models/section_model/alergias_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,20 +13,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final String _names = 'Aaron Arturo';
-  final String _lastNames = 'Camacho Valencia';
+  final String _names = 'Luis David';
+  final String _lastNames = 'Mori Gucci';
   final String _address = 'Jr. Medrano Silva 165, Barranco';
   final String _phoneNumber = '946 416 969';
   final String _bloodType = 'a_plus';
   bool _isBlurredPadecimientos = true;
   bool _isBlurredCirugias = true;
-  final List<String> _allergies = [
-    'Penicilina',
-    'Antiinflamatorios',
-    'Polen',
-    'Mariscos',
-    'Apis Melifera'
-  ];
+  List<String> _allergies = [];
   final List<String> _padecimientos = ['Diabetes', 'Artritis'];
   final List<String> _medicacionActual = [
     'Paracetamol',
@@ -32,6 +28,25 @@ class _HomeScreenState extends State<HomeScreen> {
     'Amoxicilina'
   ];
   final List<String> _cirugias = ['Apendicectomia', 'LASK'];
+
+  Future<void> fetchAlergias() async {
+    try {
+      final AlergiaApiService alergiaApiService = AlergiaApiService();
+      final List<AlergiasResponseModel> alergias =
+          await alergiaApiService.getAlergias();
+      setState(() {
+        _allergies = alergias.map((alergia) => alergia.title).toList();
+      });
+    } catch (error) {
+      print('Error: $error Alergias-HomeScreen');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchAlergias();
+  }
 
   @override
   Widget build(BuildContext context) {

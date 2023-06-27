@@ -99,54 +99,43 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
+                      FocusScope.of(context).unfocus();
+
                       if (_formLoginKey.currentState?.validate() ?? false) {
                         final loginRequestModel = LoginRequestModel(
-                            dni: _dni.text, password: _password.text);
+                          dni: _dni.text,
+                          password: _password.text,
+                        );
 
                         final scaffoldMessenger = ScaffoldMessenger.of(context);
 
-                        _loginApiService.loginUser(loginRequestModel).then(
-                            (success) {
+                        _loginApiService
+                            .loginUser(loginRequestModel)
+                            .then((success) {
                           if (success) {
                             scaffoldMessenger.showSnackBar(
                               const SnackBar(
                                 content: Text('Inicio de sesión exitoso!'),
                               ),
                             );
+                            Navigator.pushReplacementNamed(context, '/home');
                           } else {
-                            //TODO: AGREGAR UN MEJOR OVERLAY
-                            final overlayState = Overlay.of(context);
-                            final overlayEntry = OverlayEntry(
-                              builder: (context) => Positioned(
-                                top:
-                                    50, // Ajusta este valor para cambiar la posición vertical del mensaje
-                                width: MediaQuery.of(context).size.width,
-                                child: const Center(
-                                  child: Card(
-                                    color: Colors.red,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Falló inicio de sesión!',
-                                        style: TextStyle(fontSize: 18.0),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                            scaffoldMessenger.showSnackBar(
+                              const SnackBar(
+                                content: Text('Falló inicio de sesión!'),
+                                backgroundColor: Colors.red,
                               ),
                             );
-
-                            overlayState.insert(overlayEntry);
-
-                            Future.delayed(
-                              const Duration(seconds: 3),
-                              () {
-                                overlayEntry.remove();
-                              },
-                            );
                           }
-                        }).then((value) =>
-                            Navigator.pushReplacementNamed(context, '/home'));
+                        }).catchError((error) {
+                          scaffoldMessenger.showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                  'Ocurrió un error durante el inicio de sesión.'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        });
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -157,7 +146,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Login',
                       style: GoogleFonts.montserrat(
-                          fontSize: 24, color: Colors.white),
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

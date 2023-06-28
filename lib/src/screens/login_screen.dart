@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 //* DNI INPUT
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: TextFormField(
                     controller: _dni,
                     decoration: InputDecoration(
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 20),
                 //* PASSWPORD INPUT
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: TextFormField(
                     controller: _password,
                     decoration: InputDecoration(
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 24),
                 //* LOGIN BUTTON
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: SizedBox(
                     width: double.infinity,
                     height: 48,

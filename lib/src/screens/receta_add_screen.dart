@@ -79,7 +79,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 8.0),
           child: Form(
             key: _formRecetaKey,
             child: Column(

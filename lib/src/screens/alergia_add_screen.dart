@@ -40,7 +40,7 @@ class _AlergiaAddScreenState extends State<AlergiaAddScreen> {
       body: Form(
         key: _formAlergiaAdd,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
           child: Column(
             children: [
               Row(

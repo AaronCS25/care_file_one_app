@@ -30,7 +30,7 @@ class _RecetaFullPictureScreenState extends State<RecetaFullPictureScreen> {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(32, 16, 32, 12),
+            padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
             child: Container(
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(93, 93, 93, 0.1),

@@ -1,3 +1,5 @@
+import 'package:care_file_one/apis/receta_api_service.dart';
+import 'package:care_file_one/models/recetas_model/recetas_response_model.dart';
 import 'package:care_file_one/src/widgets/recetas_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,27 +12,34 @@ class RecetasScreen extends StatefulWidget {
 }
 
 class _RecetasScreenState extends State<RecetasScreen> {
-  List<Map<String, String>> recetas = [
-    {
-      'title': 'Recéta médica de paracetamos para alivio del Dolor',
-      'fecha': '18.05.2023'
-    },
-    {
-      'title': 'Recéta médica para Sumatriptán en el tratamiento de la migraña',
-      'fecha': '18.05.2023'
-    },
-    {
-      'title':
-          'Recéta médica para ibuprofeno en el tratamiento del dolor muscular',
-      'fecha': '12.04.2023'
-    },
-    {
-      'title': 'Recéta médica para Metformina en el tratamiento de la diabetes',
-      'fecha': '25.09.2002'
-    },
-  ];
+  List<Map<String, dynamic>> _recetas = [];
+
+  Future<void> fetchRecetas() async {
+    try {
+      final RecetaApiService recetaApiService = RecetaApiService();
+      final List<RecetasResponseModel> recetas =
+          await recetaApiService.getRecetas();
+      setState(() {
+        _recetas = recetas
+            .map((receta) => {
+                  'title': receta.description,
+                  'fecha': receta.date,
+                })
+            .toList();
+      });
+      print(_recetas);
+    } catch (error) {
+      print('Error: $error Alergias-HomeScreen');
+    }
+  }
 
   String currentDate = '';
+
+  @override
+  void initState() {
+    super.initState();
+    fetchRecetas();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +66,9 @@ class _RecetasScreenState extends State<RecetasScreen> {
         ],
       ),
       body: ListView.builder(
-        itemCount: recetas.length,
+        itemCount: _recetas.length,
         itemBuilder: (context, index) {
-          final currentFecha = recetas[index]['fecha']!;
+          final currentFecha = _recetas[index]['fecha']!;
           if (currentDate != currentFecha) {
             currentDate = currentFecha;
             return Column(
@@ -87,16 +96,16 @@ class _RecetasScreenState extends State<RecetasScreen> {
                   ),
                 ),
                 RecetasCard(
-                  title: recetas[index]['title']!,
-                  date: recetas[index]['fecha']!,
+                  title: _recetas[index]['title']!,
+                  date: _recetas[index]['fecha']!,
                   recetaId: 5,
                 ),
               ],
             );
           } else {
             return RecetasCard(
-              title: recetas[index]['title']!,
-              date: recetas[index]['fecha']!,
+              title: _recetas[index]['title']!,
+              date: _recetas[index]['fecha']!,
               recetaId: 5,
             );
           }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RecetasCard extends StatefulWidget {
@@ -17,6 +18,8 @@ class RecetasCard extends StatefulWidget {
 }
 
 class _RecetasCardState extends State<RecetasCard> {
+  bool _isTapped = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,7 +51,11 @@ class _RecetasCardState extends State<RecetasCard> {
                   )),
               child: InkWell(
                 onTap: () {
-                  // Acción del botón
+                  if (!_isTapped) {
+                    _isTapped = true;
+                    context.push('/home/recetas/full/${widget.recetaId}');
+                    _isTapped = false;
+                  }
                 },
                 child: const Center(
                     child: Icon(

@@ -1,4 +1,11 @@
+import 'dart:io';
+
+import 'package:care_file_one/apis/receta_api_service.dart';
+import 'package:care_file_one/models/recetas_model/receta_request_model.dart';
+import 'package:care_file_one/services/file_picker_service.dart';
+import 'package:care_file_one/services/upload_file_service.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RecetaMedicaAddScreen extends StatefulWidget {
@@ -10,6 +17,9 @@ class RecetaMedicaAddScreen extends StatefulWidget {
 
 class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
   final GlobalKey<FormState> _formRecetaKey = GlobalKey<FormState>();
+  final FilePickerService filePickerService = FilePickerService();
+  final UploadFileService uploadFileService = UploadFileService();
+  final RecetaApiService recetaApiService = RecetaApiService();
 
   final TextEditingController _description = TextEditingController();
   final TextEditingController _medicamento = TextEditingController();
@@ -24,22 +34,23 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
   final TextEditingController _firmaDelMedico = TextEditingController();
   final TextEditingController _numeroDeLicencia = TextEditingController();
   final TextEditingController _especialidad = TextEditingController();
+  late String path;
 
   List<int> dayList = List<int>.generate(
       31, (i) => i + 1); // Genera una lista de días del 1 al 31.
   List<String> monthList = [
-    'Ene',
-    'Feb',
-    'Mar',
-    'Abr',
-    'May',
-    'Jun',
-    'Jul',
-    'Ago',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dic'
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12'
   ]; // Lista de meses.
   List<int> yearList =
       List<int>.generate(104, (i) => i + 1920).reversed.toList();
@@ -50,6 +61,9 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
   String? selectedMonth;
   int? selectedYear;
   String selectedUnit = 'mg';
+  File? file;
+
+  String? date;
 
   @override
   Widget build(BuildContext context) {
@@ -592,7 +606,24 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await filePickerService.pickFile().then((value) {
+                        if (value != null) {
+                          file = value;
+                          Fluttertoast.showToast(
+                            msg: 'Archivo seleccionado',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                          );
+                        } else {
+                          Fluttertoast.showToast(
+                            msg: 'No se ha seleccionado el archivo!',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                          );
+                        }
+                      });
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
@@ -609,7 +640,61 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (_formRecetaKey.currentState?.validate() ?? false) {
+                        if (file != null &&
+                            selectedDay != null &&
+                            selectedMonth != null &&
+                            selectedYear != null) {
+                          path = await uploadFileService.uploadFile(file!);
+                          String date =
+                              '$selectedDay/$selectedMonth/$selectedYear';
+                          final RecetaRequestModel recetaRequestModel =
+                              RecetaRequestModel(
+                            idUsuario: '1',
+                            date: date,
+                            medicamento: _medicamento.text,
+                            medicamentoCantidad: _medicamentoCantidad.text,
+                            unidad: selectedUnit,
+                            instruccion: _instruccionesDeUso.text,
+                            detalles: _duracionDelTratamiento.text,
+                            dosis: _dosis.text,
+                            cada: _cada.text,
+                            via: _via.text,
+                            dias: _dias.text,
+                            cantidad: _medicamentoCantidad.text,
+                            extraInformation: _informacionAdicional.text,
+                            firmaMedico: _firmaDelMedico.text,
+                            numeroDeLicencia: _numeroDeLicencia.text,
+                            pathImage: path,
+                            description: _description.text,
+                          );
+
+                          final response = await recetaApiService
+                              .postReceta(recetaRequestModel);
+
+                          if (response) {
+                            Fluttertoast.showToast(
+                              msg: 'Receta añadida correctamente!',
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                            );
+                          } else {
+                            Fluttertoast.showToast(
+                              msg: 'No se puede añadir la receta!',
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                            );
+                          }
+                        }
+                      } else {
+                        Fluttertoast.showToast(
+                          msg: 'No se puede añadir la receta!',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
@@ -617,7 +702,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                       backgroundColor: const Color.fromRGBO(20, 196, 123, 1.0),
                     ),
                     child: Text(
-                      'Upload Receta',
+                      'Add Receta',
                       style: GoogleFonts.montserrat(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

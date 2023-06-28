@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path/path.dart';
 
 class RecetaFullPictureScreen extends StatefulWidget {
   const RecetaFullPictureScreen({super.key, required this.url});
@@ -43,8 +44,7 @@ class _RecetaFullPictureScreenState extends State<RecetaFullPictureScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Image.network(
-                          'https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&quality=85&auto=format&fit=max&s=a52bbe202f57ac0f5ff7f47166906403'),
+                      child: Image.network(widget.url),
                     ),
                     Container(
                       height: 40,

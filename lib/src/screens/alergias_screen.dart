@@ -29,9 +29,8 @@ class _AlergiasScreenState extends State<AlergiasScreen> {
                 })
             .toList();
       });
-      print(_alergias);
     } catch (error) {
-      print('Error: $error Alergias-HomeScreen');
+      throw AssertionError('Error: $error Alergias-HomeScreen');
     }
   }
 

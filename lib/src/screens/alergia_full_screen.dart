@@ -31,7 +31,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
         //type = alergiaResponseModel.type;
       });
     } catch (error) {
-      print('Error: $error Alergias-FullScreen');
+      throw AssertionError('Error: $error Alergias-FullScreen');
     }
   }
 

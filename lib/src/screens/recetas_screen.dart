@@ -29,9 +29,8 @@ class _RecetasScreenState extends State<RecetasScreen> {
                 })
             .toList();
       });
-      print(_recetas);
     } catch (error) {
-      print('Error: $error Alergias-HomeScreen');
+      throw AssertionError('Error: $error RecetasScreen');
     }
   }
 

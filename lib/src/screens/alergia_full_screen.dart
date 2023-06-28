@@ -17,7 +17,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
   String description = '';
   List<String> sintomas = [];
   String treatment = '';
-  String type = 'animal';
+  String type = 'reload';
 
   Future<void> fetchAlergia() async {
     try {
@@ -28,7 +28,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
         title = alergiaResponseModel.title;
         description = alergiaResponseModel.description;
         treatment = alergiaResponseModel.treatment;
-        //type = alergiaResponseModel.type;
+        type = alergiaResponseModel.type;
       });
     } catch (error) {
       throw AssertionError('Error: $error Alergias-FullScreen');

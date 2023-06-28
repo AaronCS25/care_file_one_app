@@ -1,6 +1,5 @@
 import 'package:care_file_one/apis/receta_api_service.dart';
 import 'package:care_file_one/models/recetas_model/receta_get_response_model.dart';
-import 'package:care_file_one/models/recetas_model/receta_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';

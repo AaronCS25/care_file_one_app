@@ -31,7 +31,6 @@ class _MainCardState extends State<MainCard> {
         onTap: () {
           if (!_isTapped) {
             _isTapped = true;
-            print('${widget.section}/full/${widget.cardId}');
             context.push('/home/${widget.section}/full/${widget.cardId}');
             _isTapped = false;
           }

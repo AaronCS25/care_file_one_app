@@ -18,7 +18,6 @@ class AlergiaApiService {
           await _dio.get(url, options: Options(headers: {'token': token}));
       return AlergiaResponseModel.fromJson(response.data);
     } catch (error) {
-      print("Error: $error AlergiaApiService");
       throw AssertionError('Error al obtener data of AlergiaApiService');
     }
   }
@@ -41,7 +40,6 @@ class AlergiaApiService {
           AlergiasResponseModel.parseList(response.data);
       return alergias;
     } catch (error) {
-      print("Error: $error AlergiaApiService");
       throw AssertionError('Error al obtener data of AlergiaApiService');
     }
   }
@@ -72,7 +70,6 @@ class AlergiaApiService {
         return false;
       }
     } catch (error) {
-      print('Error: $error AlergiaApiService');
       throw AssertionError('Error al postear datos AlergiaApiService');
     }
   }

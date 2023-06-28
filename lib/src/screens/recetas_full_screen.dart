@@ -41,7 +41,7 @@ class _RecetaFullScreenState extends State<RecetaFullScreen> {
         url = recetaResponseModel.imgUrl;
       });
     } catch (error) {
-      print('Error: $error Receta-FullScreen');
+      throw AssertionError('Error: $error Receta-FullScreen');
     }
   }
 

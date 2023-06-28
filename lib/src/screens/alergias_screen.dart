@@ -24,7 +24,7 @@ class _AlergiasScreenState extends State<AlergiasScreen> {
         _alergias = alergias
             .map((alergia) => {
                   'title': alergia.title,
-                  'type': 'animal',
+                  'type': alergia.type,
                   'alergiaId': alergia.idAlergia
                 })
             .toList();

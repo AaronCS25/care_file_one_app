@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
         _allergies = alergias.map((alergia) => alergia.title).toList();
       });
     } catch (error) {
-      print('Error: $error Alergias-HomeScreen');
+      throw AssertionError('Error: $error Alergias-HomeScreen');
     }
   }
 

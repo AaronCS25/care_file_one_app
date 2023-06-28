@@ -1,6 +1,9 @@
 import 'package:care_file_one/src/widgets/main_card.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:care_file_one/apis/alergia_api_service.dart';
+import 'package:care_file_one/models/section_model/alergias_response_model.dart';
 
 class AlergiasScreen extends StatefulWidget {
   const AlergiasScreen({super.key});
@@ -10,13 +13,33 @@ class AlergiasScreen extends StatefulWidget {
 }
 
 class _AlergiasScreenState extends State<AlergiasScreen> {
-  List<Map<String, String>> alergias = [
-    {'title': 'Penicilina', 'type': 'medica'},
-    {'title': 'Antiinflamatorios', 'type': 'medica'},
-    {'title': 'Polen', 'type': 'ambiental'},
-    {'title': 'Mariscos', 'type': 'alimenticia'},
-    {'title': 'Apis Melifera', 'type': 'animal'},
-  ];
+  List<Map<String, dynamic>> _alergias = [];
+
+  Future<void> fetchAlergias() async {
+    try {
+      final AlergiaApiService alergiaApiService = AlergiaApiService();
+      final List<AlergiasResponseModel> alergias =
+          await alergiaApiService.getAlergias();
+      setState(() {
+        _alergias = alergias
+            .map((alergia) => {
+                  'title': alergia.title,
+                  'type': 'animal',
+                  'alergiaId': alergia.idAlergia
+                })
+            .toList();
+      });
+      print(_alergias);
+    } catch (error) {
+      print('Error: $error Alergias-HomeScreen');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchAlergias();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +55,9 @@ class _AlergiasScreenState extends State<AlergiasScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push('/home/alergias/add');
+            },
             padding: const EdgeInsets.only(right: 10),
             icon: Image.asset(
               'assets/icons/add_icon.png',
@@ -43,12 +68,13 @@ class _AlergiasScreenState extends State<AlergiasScreen> {
         ],
       ),
       body: ListView.builder(
-        itemCount: alergias.length,
+        itemCount: _alergias.length,
         itemBuilder: (context, index) {
           return MainCard(
-            title: alergias[index]['title']!,
-            type: alergias[index]['type']!,
+            title: _alergias[index]['title'],
+            type: _alergias[index]['type'],
             section: 'alergias',
+            cardId: _alergias[index]['alergiaId'],
           );
         },
       ),

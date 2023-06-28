@@ -1,26 +1,46 @@
+import 'package:care_file_one/models/section_model/alergia_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:care_file_one/apis/alergia_api_service.dart';
 
 class AlergiaFullScreen extends StatefulWidget {
-  const AlergiaFullScreen(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.sintomas,
-      required this.treatment,
-      required this.type});
+  const AlergiaFullScreen({super.key, required this.alergiaId});
 
-  final String title;
-  final String description;
-  final List<String> sintomas;
-  final String treatment;
-  final String type;
+  final int alergiaId;
 
   @override
   State<AlergiaFullScreen> createState() => _AlergiaFullScreenState();
 }
 
 class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
+  String title = '';
+  String description = '';
+  List<String> sintomas = [];
+  String treatment = '';
+  String type = 'animal';
+
+  Future<void> fetchAlergia() async {
+    try {
+      final AlergiaApiService alergiaApiService = AlergiaApiService();
+      final AlergiaResponseModel alergiaResponseModel =
+          await alergiaApiService.getAlergia(widget.alergiaId);
+      setState(() {
+        title = alergiaResponseModel.title;
+        description = alergiaResponseModel.description;
+        treatment = alergiaResponseModel.treatment;
+        //type = alergiaResponseModel.type;
+      });
+    } catch (error) {
+      print('Error: $error Alergias-FullScreen');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchAlergia();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,14 +50,14 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  widget.title,
+                  title,
                   style: GoogleFonts.montserrat(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Image.asset(
-                  'assets/images/alergias/${widget.type}.png',
+                  'assets/images/alergias/$type.png',
                   width: 50,
                   height: 50,
                 )
@@ -58,11 +78,11 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       header('Descripción'),
-                      body(widget.description),
+                      body(description),
                       header('Sintomas'),
-                      textListBody(widget.sintomas),
+                      textListBody(sintomas),
                       header('Tratamiento en caso de emergencias'),
-                      body(widget.treatment)
+                      body(treatment)
                     ],
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:care_file_one/apis/signup_api_service.dart';
 import 'package:care_file_one/models/user_model/signup_request_model.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -515,7 +516,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             );
                           }
                         }).then((value) {
-                          Navigator.pushReplacementNamed(context, '/');
+                          context.go('/login');
                         });
                       }
                     },
@@ -556,7 +557,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Color.fromRGBO(0, 0, 0, 0.3))),
                     ),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/');
+                      context.go('/login');
                     },
                     child: Text(
                       'Login',

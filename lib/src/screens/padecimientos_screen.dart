@@ -46,6 +46,7 @@ class _PadecimientosScreenState extends State<PadecimientosScreen> {
             title: alergias[index]['title']!,
             type: alergias[index]['type']!,
             section: 'padecimientos',
+            cardId: 1,
           );
         },
       ),

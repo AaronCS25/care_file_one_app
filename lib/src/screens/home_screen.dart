@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:care_file_one/apis/alergia_api_service.dart';
 import 'package:care_file_one/models/section_model/alergias_response_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -236,34 +237,40 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(93, 93, 93, 0.1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: _allergies.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: RichText(
-                                        text: TextSpan(
-                                            text: '• ',
-                                            style: DefaultTextStyle.of(context)
-                                                .style,
-                                            children: <TextSpan>[
-                                              TextSpan(
-                                                text: _allergies[index],
-                                                style: GoogleFonts.montserrat(
-                                                    fontSize: 16),
-                                              )
-                                            ]),
-                                      ));
-                                },
+                          child: GestureDetector(
+                            onTap: () {
+                              context.push('/home/alergias');
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(93, 93, 93, 0.1),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: _allergies.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              text: '• ',
+                                              style:
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                  text: _allergies[index],
+                                                  style: GoogleFonts.montserrat(
+                                                      fontSize: 16),
+                                                )
+                                              ]),
+                                        ));
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -281,72 +288,80 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(93, 93, 93, 0.1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Stack(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: _padecimientos.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8.0),
-                                        child: RichText(
-                                          text: TextSpan(
-                                              text: '• ',
-                                              style:
-                                                  DefaultTextStyle.of(context)
-                                                      .style,
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                  text: _padecimientos[index],
-                                                  style: GoogleFonts.montserrat(
-                                                      fontSize: 16),
-                                                )
-                                              ]),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                if (_isBlurredPadecimientos)
-                                  Positioned.fill(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 5, sigmaY: 5),
-                                        child: Container(
-                                          color: Colors.black.withOpacity(0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4),
-                                    child: IconButton(
-                                      icon: Icon(_isBlurredPadecimientos
-                                          ? Icons.visibility_off
-                                          : Icons.visibility),
-                                      onPressed: () {
-                                        setState(() {
-                                          _isBlurredPadecimientos =
-                                              !_isBlurredPadecimientos;
-                                        });
+                          child: GestureDetector(
+                            onTap: () {
+                              if (!_isBlurredPadecimientos) {
+                                context.push('/home/padecimientos');
+                              }
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(93, 93, 93, 0.1),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: _padecimientos.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: RichText(
+                                            text: TextSpan(
+                                                text: '• ',
+                                                style:
+                                                    DefaultTextStyle.of(context)
+                                                        .style,
+                                                children: <TextSpan>[
+                                                  TextSpan(
+                                                    text: _padecimientos[index],
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            fontSize: 16),
+                                                  )
+                                                ]),
+                                          ),
+                                        );
                                       },
                                     ),
                                   ),
-                                ),
-                              ],
+                                  if (_isBlurredPadecimientos)
+                                    Positioned.fill(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 5, sigmaY: 5),
+                                          child: Container(
+                                            color: Colors.black.withOpacity(0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4),
+                                      child: IconButton(
+                                        icon: Icon(_isBlurredPadecimientos
+                                            ? Icons.visibility_off
+                                            : Icons.visibility),
+                                        onPressed: () {
+                                          setState(() {
+                                            _isBlurredPadecimientos =
+                                                !_isBlurredPadecimientos;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -369,35 +384,42 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(93, 93, 93, 0.1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: _medicacionActual.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 8.0),
-                                      child: RichText(
-                                        text: TextSpan(
-                                            text: '• ',
-                                            style: DefaultTextStyle.of(context)
-                                                .style,
-                                            children: <TextSpan>[
-                                              TextSpan(
-                                                text: _medicacionActual[index],
-                                                style: GoogleFonts.montserrat(
-                                                    fontSize: 16),
-                                              )
-                                            ]),
-                                      ));
-                                },
+                          child: GestureDetector(
+                            onTap: () {
+                              context.push('/home/medicacion');
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(93, 93, 93, 0.1),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: _medicacionActual.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: RichText(
+                                          text: TextSpan(
+                                              text: '• ',
+                                              style:
+                                                  DefaultTextStyle.of(context)
+                                                      .style,
+                                              children: <TextSpan>[
+                                                TextSpan(
+                                                  text:
+                                                      _medicacionActual[index],
+                                                  style: GoogleFonts.montserrat(
+                                                      fontSize: 16),
+                                                )
+                                              ]),
+                                        ));
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -414,72 +436,80 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(93, 93, 93, 0.1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Stack(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: _cirugias.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8.0),
-                                        child: RichText(
-                                          text: TextSpan(
-                                              text: '• ',
-                                              style:
-                                                  DefaultTextStyle.of(context)
-                                                      .style,
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                  text: _cirugias[index],
-                                                  style: GoogleFonts.montserrat(
-                                                      fontSize: 16),
-                                                )
-                                              ]),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                if (_isBlurredCirugias)
-                                  Positioned.fill(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 5, sigmaY: 5),
-                                        child: Container(
-                                          color: Colors.black.withOpacity(0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4),
-                                    child: IconButton(
-                                      icon: Icon(_isBlurredCirugias
-                                          ? Icons.visibility_off
-                                          : Icons.visibility),
-                                      onPressed: () {
-                                        setState(() {
-                                          _isBlurredCirugias =
-                                              !_isBlurredCirugias;
-                                        });
+                          child: GestureDetector(
+                            onTap: () {
+                              if (!_isBlurredPadecimientos) {
+                                context.push('/home/cirugias');
+                              }
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(93, 93, 93, 0.1),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: _cirugias.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: RichText(
+                                            text: TextSpan(
+                                                text: '• ',
+                                                style:
+                                                    DefaultTextStyle.of(context)
+                                                        .style,
+                                                children: <TextSpan>[
+                                                  TextSpan(
+                                                    text: _cirugias[index],
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                            fontSize: 16),
+                                                  )
+                                                ]),
+                                          ),
+                                        );
                                       },
                                     ),
                                   ),
-                                ),
-                              ],
+                                  if (_isBlurredCirugias)
+                                    Positioned.fill(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: BackdropFilter(
+                                          filter: ImageFilter.blur(
+                                              sigmaX: 5, sigmaY: 5),
+                                          child: Container(
+                                            color: Colors.black.withOpacity(0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4),
+                                      child: IconButton(
+                                        icon: Icon(_isBlurredCirugias
+                                            ? Icons.visibility_off
+                                            : Icons.visibility),
+                                        onPressed: () {
+                                          setState(() {
+                                            _isBlurredCirugias =
+                                                !_isBlurredCirugias;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

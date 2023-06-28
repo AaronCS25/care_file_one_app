@@ -47,6 +47,7 @@ class _MedicacionScreenState extends State<MedicacionScreen> {
             title: alergias[index]['title']!,
             type: alergias[index]['type']!,
             section: 'medicacion',
+            cardId: 1,
           );
         },
       ),

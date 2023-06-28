@@ -46,6 +46,7 @@ class _CirugiasScreenState extends State<CirugiasScreen> {
             title: alergias[index]['title']!,
             type: alergias[index]['type']!,
             section: 'cirugias',
+            cardId: 1,
           );
         },
       ),

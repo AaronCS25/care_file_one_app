@@ -1,6 +1,7 @@
 import 'package:care_file_one/apis/login_api_service.dart';
 import 'package:care_file_one/models/user_model/login_request_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -118,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 content: Text('Inicio de sesión exitoso!'),
                               ),
                             );
-                            Navigator.pushReplacementNamed(context, '/home');
+                            context.go('/home');
                           } else {
                             scaffoldMessenger.showSnackBar(
                               const SnackBar(
@@ -181,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               color: Color.fromRGBO(0, 0, 0, 0.3))),
                     ),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/signup');
+                      context.go('/signup');
                     },
                     child: Text(
                       'Sign Up',

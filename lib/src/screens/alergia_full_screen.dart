@@ -66,7 +66,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
         body: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 16, 24, 12),
+              padding: const EdgeInsets.fromLTRB(12, 16, 12, 12),
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color.fromRGBO(93, 93, 93, 0.1),

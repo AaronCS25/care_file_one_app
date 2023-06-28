@@ -1,17 +1,17 @@
-class RecetaResponseModel {
+class RecetaGetResponseModel {
   int idReceta;
-  String idUsuario;
+  int idUsuario;
   String date;
   String medicamento;
-  double medicamentoCantidad;
-  double unidad;
+  String medicamentoCantidad;
+  String unidad;
   String instruccion;
   String detalles;
-  double dosis;
-  int cada;
+  String dosis;
+  String cada;
   String via;
-  int dias;
-  double cantidad;
+  String dias;
+  String cantidad;
   String extraInformation;
   String firmaMedico;
   String numeroDeLicencia;
@@ -19,7 +19,7 @@ class RecetaResponseModel {
   String description;
   String imgUrl;
 
-  RecetaResponseModel({
+  RecetaGetResponseModel({
     required this.idReceta,
     required this.idUsuario,
     required this.date,
@@ -41,8 +41,8 @@ class RecetaResponseModel {
     required this.imgUrl,
   });
 
-  factory RecetaResponseModel.fromJson(Map<String, dynamic> json) {
-    return RecetaResponseModel(
+  factory RecetaGetResponseModel.fromJson(Map<String, dynamic> json) {
+    return RecetaGetResponseModel(
       idReceta: json["id_receta"],
       idUsuario: json['id_usuario'],
       date: json['fecha_inicio'],

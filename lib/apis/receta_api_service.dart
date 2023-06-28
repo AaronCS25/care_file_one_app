@@ -1,5 +1,5 @@
+import 'package:care_file_one/models/recetas_model/receta_get_response_model.dart';
 import 'package:care_file_one/models/recetas_model/receta_request_model.dart';
-import 'package:care_file_one/models/recetas_model/receta_response_model.dart';
 import 'package:care_file_one/models/recetas_model/recetas_response_model.dart';
 import 'package:care_file_one/services/auth_service.dart';
 import 'package:dio/dio.dart';
@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 class RecetaApiService {
   final Dio _dio = Dio();
 
-  Future<RecetaResponseModel> getReceta(int recetaId) async {
+  Future<RecetaGetResponseModel> getReceta(int recetaId) async {
     final url =
         'https://ubqop7zg6f.execute-api.us-east-1.amazonaws.com/test/receta/$recetaId';
     final String token = await Auth.getToken();
@@ -15,7 +15,7 @@ class RecetaApiService {
     try {
       final response =
           await _dio.get(url, options: Options(headers: {'token': token}));
-      return RecetaResponseModel.fromJson(response.data);
+      return RecetaGetResponseModel.fromJson(response.data);
     } catch (error) {
       throw AssertionError('Error al obtener receta: $error');
     }
@@ -29,6 +29,7 @@ class RecetaApiService {
     const url =
         'https://ubqop7zg6f.execute-api.us-east-1.amazonaws.com/test/receta';
 
+    print(userId);
     try {
       final response = await _dio.get(
         url,
@@ -58,6 +59,7 @@ class RecetaApiService {
         options: Options(headers: {'token': token}),
       );
       if (response.statusCode == 200) {
+        print(response.data);
         return true;
       } else {
         return false;

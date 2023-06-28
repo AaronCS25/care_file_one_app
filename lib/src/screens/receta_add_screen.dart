@@ -7,6 +7,7 @@ import 'package:care_file_one/services/upload_file_service.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:care_file_one/services/auth_service.dart';
 
 class RecetaMedicaAddScreen extends StatefulWidget {
   const RecetaMedicaAddScreen({super.key});
@@ -649,20 +650,22 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           path = await uploadFileService.uploadFile(file!);
                           String date =
                               '$selectedDay/$selectedMonth/$selectedYear';
+                          final userId = await Auth.getUserId();
                           final RecetaRequestModel recetaRequestModel =
                               RecetaRequestModel(
-                            idUsuario: '1',
+                            idUsuario: userId,
                             date: date,
                             medicamento: _medicamento.text,
-                            medicamentoCantidad: _medicamentoCantidad.text,
-                            unidad: selectedUnit,
+                            medicamentoCantidad:
+                                double.parse(_medicamentoCantidad.text),
+                            unidad: double.parse('2'),
                             instruccion: _instruccionesDeUso.text,
                             detalles: _duracionDelTratamiento.text,
-                            dosis: _dosis.text,
-                            cada: _cada.text,
+                            dosis: double.parse(_dosis.text),
+                            cada: int.parse(_cada.text),
                             via: _via.text,
-                            dias: _dias.text,
-                            cantidad: _medicamentoCantidad.text,
+                            dias: int.parse(_dias.text),
+                            cantidad: double.parse(_medicamentoCantidad.text),
                             extraInformation: _informacionAdicional.text,
                             firmaMedico: _firmaDelMedico.text,
                             numeroDeLicencia: _numeroDeLicencia.text,

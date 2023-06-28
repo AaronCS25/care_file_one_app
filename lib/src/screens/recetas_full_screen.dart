@@ -1,4 +1,5 @@
 import 'package:care_file_one/apis/receta_api_service.dart';
+import 'package:care_file_one/models/recetas_model/receta_get_response_model.dart';
 import 'package:care_file_one/models/recetas_model/receta_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -28,17 +29,17 @@ class _RecetaFullScreenState extends State<RecetaFullScreen> {
   Future<void> fetchReceta() async {
     try {
       final RecetaApiService recetaApiService = RecetaApiService();
-      final RecetaResponseModel recetaResponseModel =
+      final RecetaGetResponseModel recetaGetResponseModel =
           await recetaApiService.getReceta(widget.recetaId);
       setState(() {
-        fecha = recetaResponseModel.date;
-        medicamento = recetaResponseModel.medicamento;
-        instruccionesDeUso = recetaResponseModel.instruccion;
-        duracionDelTratamiento = recetaResponseModel.dias;
-        indicacionesAdicionales = recetaResponseModel.extraInformation;
-        firmaDelMedico = recetaResponseModel.firmaMedico;
-        numeroDeLicencia = recetaResponseModel.numeroDeLicencia;
-        url = recetaResponseModel.imgUrl;
+        fecha = recetaGetResponseModel.date;
+        medicamento = recetaGetResponseModel.medicamento;
+        instruccionesDeUso = recetaGetResponseModel.instruccion;
+        duracionDelTratamiento = recetaGetResponseModel.dias;
+        indicacionesAdicionales = recetaGetResponseModel.extraInformation;
+        firmaDelMedico = recetaGetResponseModel.firmaMedico;
+        numeroDeLicencia = recetaGetResponseModel.numeroDeLicencia;
+        url = recetaGetResponseModel.imgUrl;
       });
     } catch (error) {
       throw AssertionError('Error: $error Receta-FullScreen');

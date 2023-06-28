@@ -40,13 +40,12 @@ class _AlergiaAddScreenState extends State<AlergiaAddScreen> {
       body: Form(
         key: _formAlergiaAdd,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
           child: Column(
             children: [
               Row(
                 children: [
                   Expanded(
-                    flex: 2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -78,7 +77,6 @@ class _AlergiaAddScreenState extends State<AlergiaAddScreen> {
                   ),
                   const SizedBox(width: 16),
                   Expanded(
-                    flex: 1,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

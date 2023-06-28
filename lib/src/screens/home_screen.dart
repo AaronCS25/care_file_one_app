@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           //* 1ra Parte
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           //* 2da Parte
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16),
             child: Column(
               children: [
                 Align(
@@ -219,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //* 3ra Parte
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Row(
                 children: [
                   Expanded(
@@ -438,7 +438,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              if (!_isBlurredPadecimientos) {
+                              if (!_isBlurredCirugias) {
                                 context.push('/home/cirugias');
                               }
                             },
@@ -521,7 +521,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16),
             child: SizedBox(
               width: double.infinity,
               height: 48,

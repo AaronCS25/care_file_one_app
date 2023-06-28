@@ -1,4 +1,5 @@
 import 'package:care_file_one/src/screens/alergia_add_screen.dart';
+import 'package:care_file_one/src/screens/recetas_screen.dart';
 import 'package:care_file_one/src/screens/screens.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,6 +56,10 @@ final router = GoRouter(
           path: 'cirugias',
           builder: (context, state) => const CirugiasScreen(),
         ),
+        GoRoute(
+          path: 'recetas',
+          builder: (context, state) => const RecetasScreen(),
+        )
       ],
     ),
   ],

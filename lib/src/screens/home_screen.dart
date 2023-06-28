@@ -526,7 +526,9 @@ class _HomeScreenState extends State<HomeScreen> {
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.push('/home/recetas');
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(20, 196, 123, 1.0),
                     shape: RoundedRectangleBorder(

@@ -58,7 +58,7 @@ class _RecetaFullScreenState extends State<RecetaFullScreen> {
           title: Text(
             'RECETA #${widget.recetaId}',
             style: GoogleFonts.montserrat(
-              fontSize: 20,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -179,7 +179,7 @@ class _RecetaFullScreenState extends State<RecetaFullScreen> {
       child: Text(
         '$header:',
         style: GoogleFonts.montserrat(
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.bold,
         ),
       ),

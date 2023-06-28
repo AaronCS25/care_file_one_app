@@ -23,7 +23,7 @@ class _CirugiasScreenState extends State<CirugiasScreen> {
         title: Text(
           'CIRUGÍAS',
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

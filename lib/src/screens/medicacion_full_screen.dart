@@ -34,7 +34,7 @@ class _MedicacionFullScreenState extends State<MedicacionFullScreen> {
                 Text(
                   widget.title,
                   style: GoogleFonts.montserrat(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -82,7 +82,7 @@ class _MedicacionFullScreenState extends State<MedicacionFullScreen> {
       child: Text(
         '$header:',
         style: GoogleFonts.montserrat(
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -95,7 +95,7 @@ class _MedicacionFullScreenState extends State<MedicacionFullScreen> {
       child: Text(
         textBody,
         style: GoogleFonts.montserrat(
-          fontSize: 16,
+          fontSize: 14,
         ),
       ),
     );
@@ -111,7 +111,7 @@ class _MedicacionFullScreenState extends State<MedicacionFullScreen> {
           child: Text(
             '• ${listBody[index]}',
             style: GoogleFonts.montserrat(
-              fontSize: 16,
+              fontSize: 14,
             ),
           ),
         );

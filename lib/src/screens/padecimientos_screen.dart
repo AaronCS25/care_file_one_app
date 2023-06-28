@@ -23,7 +23,7 @@ class _PadecimientosScreenState extends State<PadecimientosScreen> {
         title: Text(
           'PADECIMIENTOS',
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

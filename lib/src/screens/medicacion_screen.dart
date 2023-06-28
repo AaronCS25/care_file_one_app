@@ -24,7 +24,7 @@ class _MedicacionScreenState extends State<MedicacionScreen> {
         title: Text(
           'MEDICACIÓN ACTUAL',
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

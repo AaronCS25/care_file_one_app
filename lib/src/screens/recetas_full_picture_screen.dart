@@ -22,7 +22,7 @@ class _RecetaFullPictureScreenState extends State<RecetaFullPictureScreen> {
         title: Text(
           'RECETA',
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

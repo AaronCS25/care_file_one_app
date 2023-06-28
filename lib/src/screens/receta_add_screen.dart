@@ -72,7 +72,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
         title: Text(
           'AÑADIR RECETA MÉDICA',
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -91,7 +91,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                   child: Text(
                     'Descripción',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -124,7 +124,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                   child: Text(
                     'Fecha',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -141,7 +141,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Medicamento',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -178,7 +178,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Cantidad',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -215,7 +215,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             '',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -260,7 +260,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                   child: Text(
                     'Instrucciones de uso',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -293,7 +293,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                   child: Text(
                     'Duración del tratamiento',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -330,7 +330,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Dosis',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -366,7 +366,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Cada',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -402,7 +402,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Durante',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -438,7 +438,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Via',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -474,7 +474,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                   child: Text(
                     'Información Adicional',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -501,7 +501,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                   child: Text(
                     'Firma del médico',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -538,7 +538,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Número de licencia',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -573,7 +573,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                           Text(
                             'Especialidad',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -704,7 +704,7 @@ class _RecetaMedicaAddScreenState extends State<RecetaMedicaAddScreen> {
                     child: Text(
                       'Add Receta',
                       style: GoogleFonts.montserrat(
-                        fontSize: 24,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),

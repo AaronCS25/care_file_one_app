@@ -53,7 +53,7 @@ class _AlergiaAddScreenState extends State<AlergiaAddScreen> {
                         Text(
                           'Nombre de la alergia',
                           style: GoogleFonts.montserrat(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -85,7 +85,7 @@ class _AlergiaAddScreenState extends State<AlergiaAddScreen> {
                         Text(
                           'Tipo',
                           style: GoogleFonts.montserrat(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -154,7 +154,7 @@ class _AlergiaAddScreenState extends State<AlergiaAddScreen> {
                   child: Text(
                     'Añadir',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Colors.black,
                     ),
                   ))

@@ -48,7 +48,7 @@ class _AlergiasScreenState extends State<AlergiasScreen> {
         title: Text(
           'ALERGIAS',
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

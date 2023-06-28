@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           'VISTA GENERAL',
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           //* 1ra Parte
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         'Nombres',
                         style: GoogleFonts.montserrat(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             _names,
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                             ),
                           ),
                         ),
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         'Apellidos',
                         style: GoogleFonts.montserrat(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             _lastNames,
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                             ),
                           ),
                         ),
@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           //* 2da Parte
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: Column(
               children: [
                 Align(
@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     'Dirección del usuario',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(
                       _address,
                       style: GoogleFonts.montserrat(
-                        fontSize: 16,
+                        fontSize: 14,
                       ),
                     ),
                   ),
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     'Nro. de emergencias',
                     style: GoogleFonts.montserrat(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             '+51 $_phoneNumber',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                             ),
                           ),
                         ],
@@ -219,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //* 3ra Parte
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
                 children: [
                   Expanded(
@@ -231,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             'Alergias',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -265,7 +265,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 TextSpan(
                                                   text: _allergies[index],
                                                   style: GoogleFonts.montserrat(
-                                                      fontSize: 16),
+                                                      fontSize: 14),
                                                 )
                                               ]),
                                         ));
@@ -282,7 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             'Padecimientos',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -322,7 +322,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     text: _padecimientos[index],
                                                     style:
                                                         GoogleFonts.montserrat(
-                                                            fontSize: 16),
+                                                            fontSize: 14),
                                                   )
                                                 ]),
                                           ),
@@ -378,7 +378,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             'Medicación actual',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -414,7 +414,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   text:
                                                       _medicacionActual[index],
                                                   style: GoogleFonts.montserrat(
-                                                      fontSize: 16),
+                                                      fontSize: 14),
                                                 )
                                               ]),
                                         ));
@@ -430,7 +430,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             'Cirugias',
                             style: GoogleFonts.montserrat(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -470,7 +470,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     text: _cirugias[index],
                                                     style:
                                                         GoogleFonts.montserrat(
-                                                            fontSize: 16),
+                                                            fontSize: 14),
                                                   )
                                                 ]),
                                           ),
@@ -521,7 +521,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
             child: SizedBox(
               width: double.infinity,
               height: 48,

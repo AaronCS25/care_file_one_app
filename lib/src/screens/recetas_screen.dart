@@ -85,7 +85,7 @@ class _RecetasScreenState extends State<RecetasScreen> {
                     children: [
                       Text(currentDate,
                           style: GoogleFonts.montserrat(
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Colors.grey,
                           )),
                       const Expanded(

@@ -52,7 +52,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -98,7 +98,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
       child: Text(
         '$header:',
         style: GoogleFonts.montserrat(
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -111,7 +111,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
       child: Text(
         textBody,
         style: GoogleFonts.montserrat(
-          fontSize: 16,
+          fontSize: 14,
         ),
       ),
     );
@@ -127,7 +127,7 @@ class _AlergiaFullScreenState extends State<AlergiaFullScreen> {
           child: Text(
             '• ${listBody[index]}',
             style: GoogleFonts.montserrat(
-              fontSize: 16,
+              fontSize: 14,
             ),
           ),
         );

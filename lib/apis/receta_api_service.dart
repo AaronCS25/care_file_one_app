@@ -16,8 +16,8 @@ class RecetaApiService {
           await _dio.get(url, options: Options(headers: {'token': token}));
       return RecetaResponseModel.fromJson(response.data);
     } catch (error) {
-      print("Error: $error AlergiaApiService");
-      throw AssertionError('Error al obtener data of AlergiaApiService');
+      print("Error: $error getReceta()");
+      throw AssertionError('Error al obtener data of RecetaApiService');
     }
   }
 

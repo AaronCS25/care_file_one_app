@@ -53,6 +53,7 @@ class _RecetasCardState extends State<RecetasCard> {
                 onTap: () {
                   if (!_isTapped) {
                     _isTapped = true;
+                    print(widget.recetaId);
                     context.push('/home/recetas/full/${widget.recetaId}');
                     _isTapped = false;
                   }

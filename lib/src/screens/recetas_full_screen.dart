@@ -1,4 +1,7 @@
+import 'package:care_file_one/apis/receta_api_service.dart';
+import 'package:care_file_one/models/recetas_model/receta_response_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RecetaFullScreen extends StatefulWidget {
@@ -19,7 +22,34 @@ class _RecetaFullScreenState extends State<RecetaFullScreen> {
   String indicacionesAdicionales = '';
   String firmaDelMedico = '';
   String numeroDeLicencia = '';
+  late String url;
   bool _isTapped = false;
+
+  Future<void> fetchReceta() async {
+    try {
+      final RecetaApiService recetaApiService = RecetaApiService();
+      final RecetaResponseModel recetaResponseModel =
+          await recetaApiService.getReceta(widget.recetaId);
+      setState(() {
+        fecha = recetaResponseModel.date;
+        medicamento = recetaResponseModel.medicamento;
+        instruccionesDeUso = recetaResponseModel.instruccion;
+        duracionDelTratamiento = recetaResponseModel.dias;
+        indicacionesAdicionales = recetaResponseModel.extraInformation;
+        firmaDelMedico = recetaResponseModel.firmaMedico;
+        numeroDeLicencia = recetaResponseModel.numeroDeLicencia;
+        url = recetaResponseModel.imgUrl;
+      });
+    } catch (error) {
+      print('Error: $error Receta-FullScreen');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchReceta();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,18 +101,25 @@ class _RecetaFullScreenState extends State<RecetaFullScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(93, 93, 93, 0.1),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 56, vertical: 4),
-                              child: Image.asset(
-                                'assets/images/picture.png',
-                                width: 40,
-                                height: 40,
+                          GestureDetector(
+                            onTap: () {
+                              final encodeUrl = Uri.encodeComponent(url);
+                              context.push(
+                                  '/home/recetas/full/${widget.recetaId}/picture/$encodeUrl');
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(93, 93, 93, 0.1),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 56, vertical: 4),
+                                child: Image.asset(
+                                  'assets/images/picture.png',
+                                  width: 40,
+                                  height: 40,
+                                ),
                               ),
                             ),
                           ),
@@ -116,7 +153,7 @@ class _RecetaFullScreenState extends State<RecetaFullScreen> {
                           onTap: () {
                             if (!_isTapped) {
                               _isTapped = true;
-
+                              context.pop();
                               _isTapped = false;
                             }
                           },

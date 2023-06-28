@@ -1,4 +1,5 @@
 import 'package:care_file_one/src/screens/alergia_add_screen.dart';
+import 'package:care_file_one/src/screens/recetas_full_picture_screen.dart';
 import 'package:care_file_one/src/screens/recetas_full_screen.dart';
 import 'package:care_file_one/src/screens/recetas_screen.dart';
 import 'package:care_file_one/src/screens/screens.dart';
@@ -62,19 +63,30 @@ final router = GoRouter(
             builder: (context, state) => const RecetasScreen(),
             routes: [
               GoRoute(
-                  path: 'full/:recetaId',
-                  builder: (context, state) {
-                    final recetaStringId = state.pathParameters['recetaId'];
-                    final recetaId = recetaStringId != null
-                        ? int.parse(recetaStringId)
-                        : null;
-                    if (recetaId == null) {
-                      //TODO: NOTIFICAMOS ERROR
-                    }
-                    return RecetaFullScreen(
-                      recetaId: recetaId!,
-                    );
-                  }),
+                path: 'full/:recetaId',
+                builder: (context, state) {
+                  final recetaStringId = state.pathParameters['recetaId'];
+                  final recetaId =
+                      recetaStringId != null ? int.parse(recetaStringId) : null;
+                  if (recetaId == null) {
+                    //TODO: NOTIFICAMOS ERROR
+                  }
+                  return RecetaFullScreen(
+                    recetaId: recetaId!,
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: 'picture/:url',
+                    builder: (context, state) {
+                      final url = state.pathParameters['url'];
+                      return RecetaFullPictureScreen(
+                        url: url!,
+                      );
+                    },
+                  ),
+                ],
+              ),
             ])
       ],
     ),

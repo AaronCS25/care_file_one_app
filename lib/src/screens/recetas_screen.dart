@@ -24,6 +24,7 @@ class _RecetasScreenState extends State<RecetasScreen> {
             .map((receta) => {
                   'title': receta.description,
                   'fecha': receta.date,
+                  'recetaId': receta.idReceta,
                 })
             .toList();
       });
@@ -45,7 +46,6 @@ class _RecetasScreenState extends State<RecetasScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Text(
           'RECETAS',
           style: GoogleFonts.montserrat(
@@ -98,7 +98,7 @@ class _RecetasScreenState extends State<RecetasScreen> {
                 RecetasCard(
                   title: _recetas[index]['title']!,
                   date: _recetas[index]['fecha']!,
-                  recetaId: 5,
+                  recetaId: _recetas[index]['recetaId'],
                 ),
               ],
             );
@@ -106,7 +106,7 @@ class _RecetasScreenState extends State<RecetasScreen> {
             return RecetasCard(
               title: _recetas[index]['title']!,
               date: _recetas[index]['fecha']!,
-              recetaId: 5,
+              recetaId: _recetas[index]['recetaId'],
             );
           }
         },

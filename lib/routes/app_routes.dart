@@ -1,4 +1,5 @@
 import 'package:care_file_one/src/screens/alergia_add_screen.dart';
+import 'package:care_file_one/src/screens/receta_add_screen.dart';
 import 'package:care_file_one/src/screens/recetas_full_picture_screen.dart';
 import 'package:care_file_one/src/screens/recetas_full_screen.dart';
 import 'package:care_file_one/src/screens/recetas_screen.dart';
@@ -87,6 +88,10 @@ final router = GoRouter(
                   ),
                 ],
               ),
+              GoRoute(
+                path: 'add',
+                builder: (context, state) => const RecetaMedicaAddScreen(),
+              )
             ])
       ],
     ),

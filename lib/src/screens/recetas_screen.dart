@@ -2,6 +2,7 @@ import 'package:care_file_one/apis/receta_api_service.dart';
 import 'package:care_file_one/models/recetas_model/recetas_response_model.dart';
 import 'package:care_file_one/src/widgets/recetas_card.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RecetasScreen extends StatefulWidget {
@@ -55,7 +56,9 @@ class _RecetasScreenState extends State<RecetasScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push('/home/recetas/add');
+            },
             padding: const EdgeInsets.only(right: 10),
             icon: Image.asset(
               'assets/icons/add_icon.png',

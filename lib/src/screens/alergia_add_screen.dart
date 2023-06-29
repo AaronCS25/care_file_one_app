@@ -116,8 +116,6 @@ class _AlergiaAddScreenState extends State<AlergiaAddScreen> {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  final scaffoldMessenger = ScaffoldMessenger.of(context);
-
                   _alergiaApiService
                       .postAlegia(_title.text, type)
                       .then((success) {

@@ -1,5 +1,5 @@
 class MedicamentoRequestModel {
-  int userId; // id_user
+  int userId; // user_id
   String medicamento; // titulo
   String type; // tipo
 
@@ -11,7 +11,7 @@ class MedicamentoRequestModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id_user'] = userId;
+    data['user_id'] = userId;
     data['titulo'] = medicamento;
     data['tipo'] = type;
     return data;

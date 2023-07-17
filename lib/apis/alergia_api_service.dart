@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:care_file_one/models/section_model/alergia_response_model.dart';
-import 'package:care_file_one/models/section_model/alergias_response_model.dart';
+import 'package:care_file_one/models/section_model/alergias/alergia_response_model.dart';
+import 'package:care_file_one/models/section_model/alergias/alergias_response_model.dart';
 import 'package:care_file_one/services/auth_service.dart';
 import 'package:dio/dio.dart';
 

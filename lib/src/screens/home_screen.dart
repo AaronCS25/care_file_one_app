@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:care_file_one/apis/alergia_api_service.dart';
-import 'package:care_file_one/models/section_model/alergias_response_model.dart';
+import 'package:care_file_one/models/section_model/alergias/alergias_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';

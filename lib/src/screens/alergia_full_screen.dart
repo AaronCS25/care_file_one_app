@@ -1,4 +1,4 @@
-import 'package:care_file_one/models/section_model/alergia_response_model.dart';
+import 'package:care_file_one/models/section_model/alergias/alergia_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:care_file_one/apis/alergia_api_service.dart';
